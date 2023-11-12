@@ -47,7 +47,7 @@ if __name__ == "__main__":
         keywords = hashtags.split(',')
     
     else:
-        keywords=keywords.append(hashtags)    
+        keywords.append(hashtags) 
     print(f"keywords:{keywords}")
     for keyword in keywords:
         sns_scrape(keyword)
