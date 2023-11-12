@@ -21,19 +21,19 @@ def sns_scrape(keyword):
     # with end date
     # os.system(f'snscrape --jsonl --progress --since {DATE_START} twitter-hashtag "{HASHTAG} until:{DATE_END}" > {JSON_FILENAME}.json')
 
-def scrape_twint():
+def scrape_twint(keyword):
     c = twint.Config()
     # c.Until = str(datetime.datetime.today().date() + datetime.timedelta(days=1))
     c.Since = str(datetime.datetime.today().replace(hour=0, minute=0, second=0, microsecond=0) - datetime.timedelta(days=1))
     # c.Username = "test"
-    c.Search = "#depression"
+    c.Search = "#"+keyword
     c.Location=True
     c.Images = True
     # c.Limit = 50
     # c.Custom["user"] = ["id", "tweet", "user_id", "username", "hashtags", "mentions"]
     c.User_full = True
     c.Store_csv = True
-    c.Output = "test3.csv"
+    c.Output = DATA_PATH / keyword+".csv"
     c.Debug = True
     twint.run.Search(c)
 
@@ -51,6 +51,7 @@ if __name__ == "__main__":
     print(f"keywords:{keywords}")
     for keyword in keywords:
         sns_scrape(keyword)
+        scrape_twint(keyword)
 
 
 # reference
