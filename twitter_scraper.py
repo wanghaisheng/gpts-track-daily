@@ -5,13 +5,7 @@ import pathlib
 hashtags = os.getenv('hashtags').strip()
 outdir = os.getenv('outdir').strip()
 
-keywords=[]
-print(f"hashtags:{hashtags}")
-if ',' in hashtags:
-    keywords = hashtags.split(',')
 
-else:
-    keywords=[].append(hashtags)
 
 DATE_START = str(datetime.datetime.today().date() - datetime.timedelta(days=1))
 
@@ -47,6 +41,13 @@ def scrape_twint():
 
 if __name__ == "__main__":
     # scrape_twint()
+    keywords=[]
+    print(f"hashtags:{hashtags}")
+    if ',' in hashtags:
+        keywords = hashtags.split(',')
+    
+    else:
+        keywords=[].append(hashtags)    
     for keyword in keywords:
         sns_scrape(keyword)
 
