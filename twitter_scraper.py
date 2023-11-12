@@ -6,6 +6,7 @@ hashtags = os.getenv('hashtags').strip()
 outdir = os.getenv('outdir').strip()
 
 keywords=[]
+print(f"hashtags:{hashtags}")
 if ',' in hashtags:
     keywords = hashtags.split(',')
 
